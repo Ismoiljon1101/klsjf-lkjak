@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sins Record</title>
+    <style>
+        *{
+            text-align: left;
+        }
+        i{
+            text-decoration: underline;
+            color: darkgreen;
+            background-color: yellow;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: orangered;
+            font-family: monospace;
+            height: 100vh; /* Ensure the body takes up the full height */
+            margin: 0; /* Remove default margin */
+        }
+        div {
+            width: 60%;
+            margin-top: 5%;
+           
+        }
+        p {
+            font-weight: bolder;
+            color: rgb(59, 40, 40);
+            font-size: xx-large;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            border-radius: 5px; /* Optional: Adds rounded corners */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>This is the project where I should add a function to an application I am making. Every one of us needs to be asked questions to avoid repeating the same sins over and over again. The function should ask questions like "Did you do this?" and "Did you do that?" and keep track of the answers. If a sin is repeated, the function should remind the user by saying, "You did that yesterday too. Why didn't you consider fixing it and stop committing that sin?"</h2>
+    
+        <h2>
+            
+            <strong>
+                Sins you have committed, they are shown below:
+
+            </strong>
+            <br>
+           <i>
+               I suggest copying the results and pasting in a private telegram channel to keep track and use for changes later!
+
+           </i> 
+        </h2>
+        <hr>
+        <p id="sinsList"></p>
+        <br>
+        <p id="you"></p>
+
+        <button onclick="howMany()">Check Your Sins</button>
+    </div>
+
+    <script>
+        function howMany() {
+            // Initialize the sins array
+            let sins = [];
+            const now = new Date();
+            sins.push("Date: " + now.toLocaleString());
+
+            // Get user input for the number of sins
+            let countt = prompt("How many sins have you committed today?");
+            countt = parseInt(countt, 10);
+
+            // Check if the input is a valid number
+            if (isNaN(countt)) {
+                alert("Error occurred: Please enter a valid number.");
+                return; // Exit the function early
+            }
+
+            // Ask specific questions and add responses to the sins array
+            if (countt > 0) {
+                sins.push("Did you commit a sin today?: " + (prompt("Did you commit a sin today?", "yes")));
+                sins.push("Have you committed eye zina today?: " + (prompt("Have you committed eye zina today?", "yes")));
+                sins.push("Did you lie or gossip today?: " + (prompt("Did you lie or gossip today?", "yes")));
+                sins.push("Did you listen to music today?: " + (prompt("Did you listen to music today?", "yes")));
+                sins.push("Did you miss Sunnah prayers?: " + (prompt("Did you miss Sunnah prayers?", "yes")));
+                sins.push("Did you skip making dua and zikr today?: " + (prompt("Did you skip making dua and zikr today?", "yes")));
+
+                document.getElementById('you').innerHTML = "You have committed " + countt+" sins today. It is enough to go to hell!";
+            } else if (countt === 0) {
+                document.getElementById('you').innerHTML = "Congrats, keep it up! Do not commit sins.";
+            } else {
+                alert("Error occurred: Invalid input.");
+                return; // Exit the function early
+            }
+
+            // Display the sins list
+            document.getElementById('sinsList').innerHTML = sins.join('<br>');
+        }
+    </script>
+</body>
+</html>
